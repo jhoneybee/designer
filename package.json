@@ -21,8 +21,9 @@
   },
   "peerDependencies": {},
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@babel/runtime": "^7.0.0",
-    "antd": "3.16.1",
+    "antd": "^4.15.1",
     "dob": "^2.5.10",
     "dob-react": "^2.4.17",
     "gaea-basic-components": "^1.1.2",
@@ -36,8 +37,8 @@
   "devDependencies": {
     "pri": "^3.3.25"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "zhangj",
+  "license": "MIT",
   "husky": {
     "hooks": {
       "pre-commit": "npm test -- --package root"

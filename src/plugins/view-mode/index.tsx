@@ -1,4 +1,4 @@
-import { Icon } from 'antd';
+import { LaptopOutlined, MobileOutlined, TabletOutlined } from '@ant-design/icons';
 import { Connect } from 'dob-react';
 import * as React from 'react';
 import { Props, State } from './index.type';
@@ -6,31 +6,31 @@ import * as S from './style';
 
 const selections: {
   title: string;
-  icon: string;
+  icon: React.ReactNode;
   width: number | string;
   height: number | string;
 }[] = [
   {
     title: 'PC',
-    icon: 'laptop',
+    icon: <LaptopOutlined />,
     width: '100%',
     height: '100%',
   },
   {
     title: 'Iphone6/7/8',
-    icon: 'mobile',
+    icon: <MobileOutlined />,
     width: 414,
     height: 736,
   },
   {
     title: 'IphoneX',
-    icon: 'mobile',
+    icon: <MobileOutlined />,
     width: 375,
     height: 812,
   },
   {
     title: 'iPad',
-    icon: 'tablet',
+    icon: <TabletOutlined />,
     width: 768,
     height: 1024,
   },
@@ -49,8 +49,7 @@ class ViewMode extends React.Component<Props, State> {
   public render() {
     return (
       <S.Container onMouseEnter={this.showModel} onMouseLeave={this.hideModel}>
-        <Icon type={selections[this.state.currentIndex].icon} />
-
+        {selections[this.state.currentIndex].icon}
         {this.renderModel()}
       </S.Container>
     );
@@ -78,14 +77,14 @@ class ViewMode extends React.Component<Props, State> {
     );
   };
 
-  private renderViewMode = (icon: string, text: string, index: number) => {
+  private renderViewMode = (icon: React.ReactNode, text: string, index: number) => {
     return (
       <S.ViewModeItem
         className={this.state.currentIndex === index ? 'active' : ''}
         key={index}
         onClick={this.changeCurrentIndex.bind(this, index)}
       >
-        <Icon type={icon} />
+        {icon}
         <S.ViewModeText>{text}</S.ViewModeText>
       </S.ViewModeItem>
     );

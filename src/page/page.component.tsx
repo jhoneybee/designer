@@ -4,6 +4,7 @@ import Render from 'gaea-render';
 import * as _ from 'lodash';
 import * as React from 'react';
 import Icon from '../components/icon/src';
+
 import { PureComponent } from '../utils/react-helper';
 import * as Styled from './page.style';
 import Viewport from './viewport/viewport.component';
