@@ -36,7 +36,7 @@ class MainToolEditorSelect extends React.Component<Props, State> {
 
     return (
       <Styled.Container>
-        <Select style={{ width: 150 }} value={currentValue} onChange={this.handleChange}>
+        <Select style={{ width: '100%', marginLeft: 10 }} value={currentValue} onChange={this.handleChange}>
           {data.map((each, index) => {
             return (
               <Select.Option key={index.toString()} value={each.value}>

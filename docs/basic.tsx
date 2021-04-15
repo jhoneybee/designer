@@ -1,24 +1,14 @@
 import GaeaComponents from 'gaea-basic-components';
 import * as React from 'react';
 import Component from '../src/index';
+import { FormComponent } from '../src/componentClasses/form';
+import { FormInputComponent } from '../src/componentClasses/input';
+import { RowComponent } from '../src/componentClasses/row';
+import { ColComponent } from '../src/componentClasses/col';
 
 class Props {}
 
 class State {}
-
-class TestComponent extends React.PureComponent {
-  public static defaultProps = {
-    editSetting: {
-      key: 'aaaa',
-      name: '66666',
-      isContainer: false
-    }
-  };
-
-  public render() {
-    return <div>123</div>;
-  }
-}
 
 export default class Page extends React.PureComponent<Props, State> {
   public static defaultProps = new Props();
@@ -31,7 +21,13 @@ export default class Page extends React.PureComponent<Props, State> {
         onSave={data => {
           console.log('data', data);
         }}
-        componentClasses={[TestComponent, ...GaeaComponents]}
+        componentClasses={[
+          FormComponent,
+          FormInputComponent,
+          RowComponent,
+          ColComponent,
+          GaeaComponents[0],
+        ]}
       />
     );
   }

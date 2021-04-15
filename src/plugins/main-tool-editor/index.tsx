@@ -1,3 +1,4 @@
+import { DeleteOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
 import { Connect } from 'dob-react';
 import * as React from 'react';
@@ -63,7 +64,7 @@ class MainToolEditor extends React.Component<Props, State> {
           <Styled.RightContainer>
             {this.instanceInfo.parentInstanceKey !== null && (
               <Tooltip title={this.props.stores.ApplicationStore.setLocale('删除此实例', 'Delete this instance')}>
-                <Button shape="circle" icon="delete" onClick={this.removeCurrentInstance} />
+                <Button shape="circle" icon={<DeleteOutlined />} onClick={this.removeCurrentInstance} />
               </Tooltip>
             )}
           </Styled.RightContainer>

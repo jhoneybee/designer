@@ -23,28 +23,50 @@ class ViewportGuideline extends React.Component<typings.Props, typings.State> {
 
   public render() {
     // 正在拖拽中不显示
-    if (this.props.stores.ViewportStore.currentDragInfo !== null) {
-      return null;
-    }
+    // if (this.props.stores.ViewportStore.currentDragInfo !== null) {
+    //   return null;
+    // }
 
     // 没有 hover 元素不显示
-    if (this.props.stores.ViewportStore.currentHoverInstanceKey === null) {
-      return null;
+    // if (this.props.stores.ViewportStore.currentHoverInstanceKey === null) {
+    //   return null;
+    // }
+
+    if (this.props.stores.ViewportStore.currentEditInstanceKey) {
+      const targetBoundingClientRect = this.props.stores.ViewportStore.instanceDoms
+        .get(this.props.stores.ViewportStore.currentEditInstanceKey)
+        .getBoundingClientRect();
+      const viewportBoundingClientRect = this.props.stores.ViewportStore.viewportDOM.getBoundingClientRect();
+
+      const style = {
+        width: targetBoundingClientRect.width - 1,
+        height: targetBoundingClientRect.height - 1,
+        top: targetBoundingClientRect.top - viewportBoundingClientRect.top,
+        left: targetBoundingClientRect.left - viewportBoundingClientRect.left,
+        border: '1px dashed #23b7e5',
+      };
+
+      return <Styled.Container style={style} />;
     }
 
-    const targetBoundingClientRect = this.props.stores.ViewportStore.instanceDoms
-      .get(this.props.stores.ViewportStore.currentHoverInstanceKey)
-      .getBoundingClientRect();
-    const viewportBoundingClientRect = this.props.stores.ViewportStore.viewportDOM.getBoundingClientRect();
+    if (this.props.stores.ViewportStore.currentHoverInstanceKey) {
+      const targetBoundingClientRect = this.props.stores.ViewportStore.instanceDoms
+        .get(this.props.stores.ViewportStore.currentHoverInstanceKey)
+        .getBoundingClientRect();
+      const viewportBoundingClientRect = this.props.stores.ViewportStore.viewportDOM.getBoundingClientRect();
 
-    const style = {
-      width: targetBoundingClientRect.width - 1,
-      height: targetBoundingClientRect.height - 1,
-      top: targetBoundingClientRect.top - viewportBoundingClientRect.top,
-      left: targetBoundingClientRect.left - viewportBoundingClientRect.left,
-    };
+      const style = {
+        width: targetBoundingClientRect.width - 1,
+        height: targetBoundingClientRect.height - 1,
+        top: targetBoundingClientRect.top - viewportBoundingClientRect.top,
+        left: targetBoundingClientRect.left - viewportBoundingClientRect.left,
+        border: '1px dashed #23b7e5',
+      };
 
-    return <Styled.Container style={style} />;
+      return <Styled.Container style={style} />;
+    }
+
+    return null;
   }
 
   /**

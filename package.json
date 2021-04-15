@@ -1,7 +1,7 @@
 {
-  "name": "gaea-editor",
+  "name": "designer",
   "version": "2.3.26",
-  "description": "",
+  "description": "React 可视化代码编辑器",
   "main": "dist/main",
   "types": "declaration/index.d.ts",
   "scripts": {

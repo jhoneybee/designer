@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 // tslint:disable-next-line:no-unused-expression
 export const GlobalStyle = createGlobalStyle`
   .gaea-container {
-    border: 1px dotted #ccc;
+    // border: 1px dotted rgba(204,204,204, .2);
   }
 
   .gaea-draggable {

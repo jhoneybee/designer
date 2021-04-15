@@ -60,6 +60,11 @@ class DragMenu extends React.Component<Props, State> {
           return false;
         }
 
+        // 过滤主容器
+        if (gaeaKey === 'gaea-container') {
+          return false;
+        }
+
         // 如果搜索框没有输入，展示
         if (this.state.searchContent === '') {
           return true;
