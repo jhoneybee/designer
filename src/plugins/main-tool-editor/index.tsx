@@ -86,9 +86,9 @@ class MainToolEditor extends React.Component<Props, State> {
               '该组件还未添加编辑信息，',
               'This component has no edit info yet,',
             )}
-            <a href="https://github.com/ascoders/gaea-editor" target="_blank" rel="noopener noreferrer">
+            {/* <a href="https://github.com/ascoders/gaea-editor" target="_blank" rel="noopener noreferrer">
               {this.props.stores.ApplicationStore.setLocale('点击了解如何添加', 'Click to know learn it')}
-            </a>
+            </a> */}
           </Styled.EmptyDescription>
         </Styled.EmptyContainer>
       );

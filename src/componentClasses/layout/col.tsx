@@ -6,6 +6,7 @@ export class Props {
     key: 'Col',
     name: 'Col 列布局',
     isContainer: true,
+    group: 'Layout',
     editors: [
       '组件属性',
       {

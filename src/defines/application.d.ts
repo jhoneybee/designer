@@ -40,6 +40,12 @@ declare interface IGaeaSetting {
    * Custom show name
    */
   name: string;
+
+  /**
+   * 所属分组
+   */
+  group?: string;
+
   /**
    * Edit infos
    */

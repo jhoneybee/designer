@@ -11,10 +11,12 @@ class DragMenu extends React.Component<Props, State> {
 
   public state = new State();
 
-  private listContainer: React.ReactInstance;
+  private listContainer: Map<string, React.ReactInstance> = new Map();
 
   public componentDidMount() {
-    this.props.actions.ViewportAction.registerOuterDrag(ReactDOM.findDOMNode(this.listContainer) as HTMLElement);
+    this.listContainer.forEach(value => {
+      this.props.actions.ViewportAction.registerOuterDrag(value as HTMLElement);
+    });
   }
 
   public render() {
@@ -32,19 +34,31 @@ class DragMenu extends React.Component<Props, State> {
           onChange={this.handleSearch}
           placeholder={this.props.stores.ApplicationStore.setLocale('搜索..', 'Search..')}
         />
-
-        <Styled.ListContainer
-          ref={(ref: React.ReactInstance) => {
-            this.listContainer = ref;
-          }}
-        >
-          {this.getList()}
-        </Styled.ListContainer>
-
+        {this.renderList('基本组件', 'General', this.getList())}
+        {this.renderList('Form 组件', 'Form', this.getList())}
+        {this.renderList('Layout 布局组件', 'Layout', this.getList())}
         {this.props.actions.ApplicationAction.loadPluginByPosition('toolContainerDragMenuList')}
       </Styled.Container>
     );
   }
+
+  private renderList = (title: string, group: string, dom: React.ReactNode) => {
+    if (Array.isArray(dom) && dom.length > 0) {
+      return (
+        <Styled.GroupListContainer>
+          <p> {title} </p>
+          <Styled.ListContainer
+            ref={(ref: React.ReactInstance) => {
+              this.listContainer.set(group, ref);
+            }}
+          >
+            {this.getList().filter(element => element.props['data-gaea-group'] === group)}
+          </Styled.ListContainer>
+        </Styled.GroupListContainer>
+      );
+    }
+    return null;
+  };
 
   private getList = () => {
     return Array.from(this.props.stores.ApplicationStore.componentClasses)
@@ -76,7 +90,12 @@ class DragMenu extends React.Component<Props, State> {
         const setting = this.props.stores.ApplicationStore.componentSetting.get(gaeaKey);
 
         return (
-          <Styled.Component key={`standard${index}`} data-gaea-key={setting.key}>
+          <Styled.Component
+            key={`standard${index}`}
+            data-gaea-group={setting.group}
+            data-gaea-key={setting.key}
+            className="gaea-component-drag-menu"
+          >
             {setting.name}
           </Styled.Component>
         );
@@ -102,6 +121,7 @@ class DragMenu extends React.Component<Props, State> {
 
                 return (
                   <Styled.Component
+                    className="gaea-component-drag-menu"
                     key={`preSetting${index}&${childIndex}`}
                     data-gaea-key={componentClass.defaultProps.editSetting.key}
                     data-props={JSON.stringify(preComponentInfo.props)}

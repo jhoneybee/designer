@@ -6,11 +6,12 @@ export class Props {
     key: 'Row',
     name: 'Row 行布局',
     isContainer: true,
+    group: 'Layout',
     editors: [
       '组件属性',
       {
         text: '垂直对齐方式',
-        filed: 'align',
+        field: 'align',
         type: 'select',
         data: [
           {
@@ -24,6 +25,30 @@ export class Props {
           {
             text: '底部',
             value: 'bottom',
+          },
+        ],
+      },{
+        text: '水平排列',
+        field: 'justify',
+        type: 'select',
+        data: [
+          {
+            text: '左边',
+            value: 'start',
+          },
+          {
+            text: '右边',
+            value: 'end',
+          },
+          {
+            text: '居中',
+            value: 'center',
+          }, {
+            text: '平均分配 - around',
+            value: 'space-around',
+          },{
+            text: '平均分配 - between',
+            value: 'space-between',
           },
         ],
       },
@@ -43,7 +68,8 @@ export class Props {
   public labelAlign = 'left';
 
   public label = '未定义';
-
+  public justify = 'start';
+  public align = 'top';
   public style: React.CSSProperties = { padding: 5, minHeight: 40 };
 }
 

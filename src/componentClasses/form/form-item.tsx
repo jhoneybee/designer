@@ -3,9 +3,10 @@ import { Input, Form, FormItemProps } from 'antd';
 
 export class Props {
   public editSetting = {
-    key: 'Input',
-    name: 'Input 输入框',
-    isContainer: false,
+    key: 'FormItem',
+    name: 'FormItem 表单字段',
+    isContainer: true,
+    group: 'Form',
     editors: [
       '组件属性',
       {
@@ -19,7 +20,7 @@ export class Props {
         type: 'string',
       },
       {
-        text: '标签对其方式',
+        text: '对其方式',
         field: 'labelAlign',
         type: 'select',
         data: [
@@ -32,29 +33,35 @@ export class Props {
             value: 'right',
           },
         ],
+      },{
+        text: '冒号',
+        field: 'colon',
+        type: 'boolean'
       },
       {
         text: '隐藏',
         field: 'hidden',
         type: 'boolean',
-      },
+      },{
+        text: '必填',
+        field: 'required',
+        type: 'boolean',
+      }
     ],
   };
 
   public labelAlign = 'left';
-
   public label = '未定义';
+  public colon = true;
 }
 
-export class FormInputComponent extends React.Component<IGaeaProps, any> {
+export class FormItemComponent extends React.Component<IGaeaProps, any> {
   public static defaultProps = new Props();
 
   public render() {
     const props = (this.props as unknown) as FormItemProps;
     return (
-      <Form.Item {...props}>
-        <Input />
-      </Form.Item>
+      <Form.Item {...props} />
     );
   }
 }

@@ -6,10 +6,11 @@ export class Props {
     key: 'Form',
     name: 'Form 表单',
     isContainer: true,
+    group: 'Form',
     editors: [
       '组件属性',
       {
-        text: '标签对其方式',
+        text: '对其方式',
         field: 'labelAlign',
         type: 'select',
         data: [
@@ -22,12 +23,26 @@ export class Props {
             value: 'right',
           },
         ],
-      },
+      }, {
+        text: '布局',
+        field: 'layout',
+        type: 'select',
+        data: [{
+          text: '水平布局',
+          value: 'horizontal'
+        }, {
+          text: '垂直布局',
+          value: 'vertical'
+        }, {
+          text: '内联布局',
+          value: 'inline'
+        }]
+      }
     ],
   };
 
   public labelAlign = 'left';
-
+  public layout = 'horizontal'
   public style: React.CSSProperties = { padding: 5, minHeight: 40 };
 }
 

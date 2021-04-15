@@ -15,6 +15,11 @@ class DragMenuButton extends React.Component<Props, State> {
 
   public state = new State();
 
+  public componentDidMount() {
+    this.props.actions.ApplicationAction.setLeftTool('dragMenu');
+    this.props.actions.ApplicationAction.setRightTool(null);
+  }
+
   public render() {
     return (
       <Tooltip title={this.props.stores.ApplicationStore.setLocale('挑选组件', 'Pick Component')} placement="right">

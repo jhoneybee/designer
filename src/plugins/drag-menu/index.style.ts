@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 
 export const Component = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 30px;
+  height: 2.2rem;
   padding: 0 10px;
   cursor: pointer;
   font-size: 14px;
   color: #666;
   background-color: #eee;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
   transition: background-color 0.3s;
   &:hover {
-    background-color: white;
+    border: 1px dashed #23b7e5;
   }
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 `;
 
 export const Container = styled.div`
@@ -68,4 +70,11 @@ export const ListContainer = styled.div`
   overflow-y: auto;
   flex-grow: 1;
   flex-basis: 0;
+`;
+
+export const GroupListContainer = styled.div`
+  margin-top: 1rem;
+  margin-left: 1rem;
+  > p {
+  }
 `;
